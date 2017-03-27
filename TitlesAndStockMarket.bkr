@@ -1,0 +1,1462 @@
+{
+    "beaker": "2",
+    "evaluators": [
+        {
+            "name": "HTML",
+            "plugin": "HTML",
+            "view": {
+                "cm": {
+                    "mode": "htmlmixed"
+                }
+            }
+        },
+        {
+            "name": "TeX",
+            "plugin": "TeX",
+            "view": {
+                "cm": {
+                    "mode": "stex"
+                }
+            }
+        },
+        {
+            "name": "R",
+            "plugin": "R",
+            "view": {
+                "cm": {
+                    "mode": "r"
+                }
+            }
+        },
+        {
+            "name": "Python3",
+            "plugin": "Python3",
+            "setup": "%matplotlib inline\nimport numpy\nimport matplotlib\nfrom matplotlib import pylab, mlab, pyplot\nnp = numpy\nplt = pyplot\nfrom IPython.display import display\nfrom IPython.core.pylabtools import figsize, getfigs\nfrom pylab import *\nfrom numpy import *\n",
+            "view": {
+                "cm": {
+                    "mode": "python"
+                }
+            }
+        },
+        {
+            "name": "Java",
+            "plugin": "Java",
+            "imports": "com.twosigma.beaker.chart.Color\ncom.twosigma.beaker.chart.GradientColor\ncom.twosigma.beaker.chart.legend.*\ncom.twosigma.beaker.chart.Filter\ncom.twosigma.beaker.BeakerProgressUpdate\ncom.twosigma.beaker.chart.xychart.*\ncom.twosigma.beaker.chart.xychart.plotitem.*\ncom.twosigma.beaker.chart.categoryplot.*\ncom.twosigma.beaker.chart.categoryplot.plotitem.*\ncom.twosigma.beaker.chart.histogram.*\ncom.twosigma.beaker.chart.treemap.*\ncom.twosigma.beaker.chart.treemap.util.*\nnet.sf.jtreemap.swing.*\ncom.twosigma.beaker.NamespaceClient\ncom.twosigma.beaker.chart.heatmap.HeatMap\ncom.twosigma.beaker.jvm.object.*\ncom.twosigma.beaker.easyform.*\ncom.twosigma.beaker.easyform.formitem.*",
+            "view": {
+                "cm": {
+                    "mode": "text/x-java"
+                }
+            }
+        }
+    ],
+    "cells": [
+        {
+            "id": "codezYi30L",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "import os",
+                    "import sys",
+                    "import numpy as np",
+                    "from sklearn.feature_extraction.text import CountVectorizer",
+                    "from sklearn.linear_model import LogisticRegression"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "02E8851334C848C19DB1E2FB2DD3BB4B",
+                "elapsedTime": 916,
+                "dataresult": 27
+            },
+            "evaluatorReader": true,
+            "lineCount": 5,
+            "initialization": true,
+            "metadata": {
+                "publication-id": "1f309e64-9d32-11e6-babc-778bd33e6ddb"
+            }
+        },
+        {
+            "id": "codeafIn6S",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "data = pd.read_csv('C:/Users/Alexander/Documents/GitHub/MyProjects/PythonProjects/TitlesAndStockMarket/resources/Combined_News_DJIA.csv')",
+                    "data.head()"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            "Date",
+                            "Label",
+                            "Top1",
+                            "Top2",
+                            "Top3",
+                            "Top4",
+                            "Top5",
+                            "Top6",
+                            "Top7",
+                            "Top8",
+                            "Top9",
+                            "Top10",
+                            "Top11",
+                            "Top12",
+                            "Top13",
+                            "Top14",
+                            "Top15",
+                            "Top16",
+                            "Top17",
+                            "Top18",
+                            "Top19",
+                            "Top20",
+                            "Top21",
+                            "Top22",
+                            "Top23",
+                            "Top24",
+                            "Top25"
+                        ],
+                        "actualtype": [
+                            0,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "actualalign": [
+                            "L",
+                            "R",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L",
+                            "L"
+                        ],
+                        "colorder": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                            17,
+                            18,
+                            19,
+                            20,
+                            21,
+                            22,
+                            23,
+                            24,
+                            25,
+                            26,
+                            27
+                        ],
+                        "getCellSho": [
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true,
+                            true
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        "Date",
+                        "Label",
+                        "Top1",
+                        "Top2",
+                        "Top3",
+                        "Top4",
+                        "Top5",
+                        "Top6",
+                        "Top7",
+                        "Top8",
+                        "Top9",
+                        "Top10",
+                        "Top11",
+                        "Top12",
+                        "Top13",
+                        "Top14",
+                        "Top15",
+                        "Top16",
+                        "Top17",
+                        "Top18",
+                        "Top19",
+                        "Top20",
+                        "Top21",
+                        "Top22",
+                        "Top23",
+                        "Top24",
+                        "Top25"
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            0,
+                            "2008-08-08",
+                            0,
+                            "b\"Georgia 'downs two Russian warplanes' as countries move to brink of war\"",
+                            "b'BREAKING: Musharraf to be impeached.'",
+                            "b'Russia Today: Columns of troops roll into South Ossetia; footage from fighting (YouTube)'",
+                            "b'Russian tanks are moving towards the capital of South Ossetia, which has reportedly been completely destroyed by Georgian artillery fire'",
+                            "b\"Afghan children raped with 'impunity,' U.N. official says - this is sick, a three year old was raped and they do nothing\"",
+                            "b'150 Russian tanks have entered South Ossetia whilst Georgia shoots down two Russian jets.'",
+                            "b\"Breaking: Georgia invades South Ossetia, Russia warned it would intervene on SO's side\"",
+                            "b\"The 'enemy combatent' trials are nothing but a sham: Salim Haman has been sentenced to 5 1/2 years, but will be kept longer anyway just because they feel like it.\"",
+                            "b'Georgian troops retreat from S. Osettain capital, presumably leaving several hundred people killed. [VIDEO]'",
+                            "b'Did the U.S. Prep Georgia for War with Russia?'",
+                            "b'Rice Gives Green Light for Israel to Attack Iran: Says U.S. has no veto over Israeli military ops'",
+                            "b'Announcing:Class Action Lawsuit on Behalf of American Public Against the FBI'",
+                            "b\"So---Russia and Georgia are at war and the NYT's top story is opening ceremonies of the Olympics?  What a fucking disgrace and yet further proof of the decline of journalism.\"",
+                            "b\"China tells Bush to stay out of other countries' affairs\"",
+                            "b'Did World War III start today?'",
+                            "b'Georgia Invades South Ossetia - if Russia gets involved, will NATO absorb Georgia and unleash a full scale war?'",
+                            "b'Al-Qaeda Faces Islamist Backlash'",
+                            "b'Condoleezza Rice: \"The US would not act to prevent an Israeli strike on Iran.\" Israeli Defense Minister Ehud Barak: \"Israel is prepared for uncompromising victory in the case of military hostilities.\"'",
+                            "b'This is a busy day:  The European Union has approved new sanctions against Iran in protest at its nuclear programme.'",
+                            "b\"Georgia will withdraw 1,000 soldiers from Iraq to help fight off Russian forces in Georgia's breakaway region of South Ossetia\"",
+                            "b'Why the Pentagon Thinks Attacking Iran is a Bad Idea - US News &amp; World Report'",
+                            "b'Caucasus in crisis: Georgia invades South Ossetia'",
+                            "b'Indian shoe manufactory  - And again in a series of \"you do not like your work?\"'",
+                            "b'Visitors Suffering from Mental Illnesses Banned from Olympics'",
+                            "b\"No Help for Mexico's Kidnapping Surge\""
+                        ],
+                        [
+                            1,
+                            "2008-08-11",
+                            1,
+                            "b'Why wont America and Nato help us? If they wont help us now, why did we help them in Iraq?'",
+                            "b'Bush puts foot down on Georgian conflict'",
+                            "b\"Jewish Georgian minister: Thanks to Israeli training, we're fending off Russia \"",
+                            "b'Georgian army flees in disarray as Russians advance - Gori abandoned to Russia without a shot fired'",
+                            "b\"Olympic opening ceremony fireworks 'faked'\"",
+                            "b'What were the Mossad with fraudulent New Zealand Passports doing in Iraq?'",
+                            "b'Russia angered by Israeli military sale to Georgia'",
+                            "b'An American citizen living in S.Ossetia blames U.S. and Georgian leaders for the genocide of innocent people'",
+                            "b'Welcome To World War IV! Now In High Definition!'",
+                            "b\"Georgia's move, a mistake of monumental proportions \"",
+                            "b'Russia presses deeper into Georgia; U.S. says regime change is goal'",
+                            "b'Abhinav Bindra wins first ever Individual Olympic Gold Medal for India'",
+                            "b' U.S. ship heads for Arctic to define territory'",
+                            "b'Drivers in a Jerusalem taxi station threaten to quit rather than work for their new boss - an Arab'",
+                            "b'The French Team is Stunned by Phelps and the 4x100m Relay Team'",
+                            "b'Israel and the US behind the Georgian aggression?'",
+                            "b'\"Do not believe TV, neither Russian nor Georgian. There are much more victims\"'",
+                            "b'Riots are still going on in Montreal (Canada) because police murdered a boy on Saturday.'",
+                            "b'China to overtake US as largest manufacturer'",
+                            "b'War in South Ossetia [PICS]'",
+                            "b'Israeli Physicians Group Condemns State Torture'",
+                            "b' Russia has just beaten the United States over the head with Peak Oil'",
+                            "b'Perhaps *the* question about the Georgia - Russia conflict '",
+                            "b'Russia is so much better at war'",
+                            "b\"So this is what it's come to: trading sex for food.\""
+                        ],
+                        [
+                            2,
+                            "2008-08-12",
+                            0,
+                            "b'Remember that adorable 9-year-old who sang at the opening ceremonies? That was fake, too.'",
+                            "b\"Russia 'ends Georgia operation'\"",
+                            "b'\"If we had no sexual harassment we would have no children...\"'",
+                            "b\"Al-Qa'eda is losing support in Iraq because of a brutal crackdown on activities it regards as un-Islamic - including women buying cucumbers\"",
+                            "b'Ceasefire in Georgia: Putin Outmaneuvers the West'",
+                            "b'Why Microsoft and Intel tried to kill the XO $100 laptop'",
+                            "b'Stratfor: The Russo-Georgian War and the Balance of Power   '",
+                            "b\"I'm Trying to Get a Sense of This Whole Georgia-Russia War: Vote Up If You Think Georgia Started It, Or Down If you Think Russia Did\"",
+                            "b\"The US military was surprised by the timing and swiftness of the Russian military's move into South Ossetia and is still trying to sort out what happened, a US defense official said Monday\"",
+                            "b'U.S. Beats War Drum as Iran Dumps the Dollar'",
+                            "b'Gorbachev: \"Georgian military attacked the South Ossetian capital of Tskhinvali with multiple rocket launchers designed to devastate large areas\"'",
+                            "b'CNN use footage of Tskhinvali ruins to cover Georgian report [VIDEO]'",
+                            "b'Beginning a war as the Olympics were opening violates the ancient tradition of a truce to conflict during the Games.  The IOC could respond by taking the 2014 games away from Russia.'",
+                            "b'55 pyramids as large as the Luxor stacked into a mega-city pyramid in Tokyo Bay'",
+                            "b'The 11 Top Party Cities in the World'",
+                            "b'U.S. troops still in Georgia (did you know they were in Georgia in the first place?)'",
+                            "b'Why Russias response to Georgia was right'",
+                            "b'Gorbachev accuses U.S. of making a \"serious blunder\" in pursuing its interest in the Caucasus region'",
+                            "b'Russia, Georgia, and NATO: Cold War Two'",
+                            "b'Remember that adorable 62-year-old who led your country into war based on evidence? That was fake, too.'",
+                            "b'War in Georgia: The Israeli connection'",
+                            "b'All signs point to the US encouraging Georgia to invade South Ossetia. Goddamnit Bush.'",
+                            "b'Christopher King argues that the US and NATO are behind the Georgian invasion of South Ossetia but have misjudged Russian resolve. '",
+                            "b'America: The New Mexico?'",
+                            "b\"BBC NEWS | Asia-Pacific | Extinction 'by man not climate'\""
+                        ],
+                        [
+                            3,
+                            "2008-08-13",
+                            0,
+                            "b' U.S. refuses Israel weapons to attack Iran: report'",
+                            "b\"When the president ordered to attack Tskhinvali [the capital of South Ossetia], we knew then we were doomed. How come he didn't realize that?\"",
+                            "b' Israel clears troops who killed Reuters cameraman'",
+                            "b'Britain\\'s policy of being tough on drugs is \"pointless\", says a former civil servant who once ran the Cabinet\\'s anti-drugs unit.'",
+                            "b'Body of 14 year old found in trunk; Latest (ransom paid) kidnapping victim in Mexico. Head cop quits, Prez dissolves suspect elite task force'",
+                            "b'China has moved 10 *million* quake survivors into prefab homes'",
+                            "b\"Bush announces Operation Get All Up In Russia's Grill. Yeah, this will end well.\"",
+                            "b'Russian forces sink Georgian ships '",
+                            "b\"The commander of a Navy air reconnaissance squadron that provides the President and the defense secretary the airborne ability to command the nation's nuclear weapons has been relieved of duty\"",
+                            "b\"92% of CNN readers: Russia's actions in Georgia - justified!\"",
+                            "b'USA to send fleet into Black Sea to help Georgia, send troops in \"humanitarian aid exercise\"'",
+                            "b\"US warns against Israeli plan to strike against Iran's nuclear facilities\"",
+                            "b\"In an intriguing cyberalliance, two Estonian computer experts are heading to Georgia to keep the country's networks running amid an intense military confrontation with Russia\"",
+                            "b'The CNN Effect: Georgia Schools Russia in Information Warfare'",
+                            "b'Why Russias response to Georgia was right'",
+                            "b'Elephants extinct by 2020?'",
+                            "b'US humanitarian missions soon in Georgia - if Russia hits the US - WWIII?'",
+                            "b\"Georgia's DDOS came from US sources\"",
+                            "b'Russian convoy heads into Georgia, violating truce'",
+                            "b'Israeli defence minister: US against strike on Iran'",
+                            "b'Gorbachev: We Had No Choice'",
+                            "b'Witness: Russian forces head towards Tbilisi in breach of ceasefire agreement'",
+                            "b' Quarter of Russians blame U.S. for conflict: poll'",
+                            "b'Georgian president  says US military will take control of seaports and airports - Pentagon denies'",
+                            "b'2006: Nobel laureate Aleksander Solzhenitsyn accuses U.S., NATO of encircling Russia'"
+                        ],
+                        [
+                            4,
+                            "2008-08-14",
+                            1,
+                            "b'All the experts admit that we should legalise drugs '",
+                            "b'War in South Osetia - 89 pictures made by a Russian soldier.'",
+                            "b'Swedish wrestler Ara Abrahamian throws away medal in Olympic hissy fit '",
+                            "b'Russia exaggerated the death toll in South Ossetia. Now only 44 were originally killed compared to 2,000.'",
+                            "b'Missile That Killed 9 Inside Pakistan May Have Been Launched by the CIA'",
+                            "b\"Rushdie Condemns Random House's Refusal to Publish Novel for Fear of Muslim Retaliation\"",
+                            "b'Poland and US agree to missle defense deal. Interesting timing!'",
+                            "b'Will the Russians conquer Tblisi? Bet on it, no seriously you can BET on it'",
+                            "b'Russia exaggerating South Ossetian death toll, says human rights group'",
+                            "b' Musharraf expected to resign rather than face impeachment'",
+                            "b'Moscow Made Plans Months Ago to Invade Georgia'",
+                            "b'Why Russias response to Georgia was right'",
+                            "b'Nigeria has handed over the potentially oil-rich Bakassi peninsula to Cameroon.'",
+                            "b'The US and Poland have agreed a preliminary deal on plans for the controversial US defence shield'",
+                            "b'Russia apparently is sabotaging infrastructure to cripple the already battered Georgian military.'",
+                            "b'Bank analyst forecast Georgian crisis 2 days early'",
+                            "b\"Georgia confict could set back Russia's US relations 'for years' | World news | guardian.co.uk\"",
+                            "b'War in the Caucasus is as much the product of an American imperial drive as local conflicts.'",
+                            "b'\"Non-media\" photos of South Ossetia/Georgia conflict.'",
+                            "b'Georgian TV reporter shot by Russian sniper during live broadcast [video]'",
+                            "b'Saudi Arabia: Mother moves to block child marriage'",
+                            "b'Taliban wages war on humanitarian aid workers'",
+                            "b'Russia: World  \"can forget about\" Georgia\\'s territorial integrity'",
+                            "b'Darfur rebels accuse Sudan of mounting major attack'",
+                            "b'Philippines : Peace Advocate say Muslims need assurance Christians not out to convert them'"
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "string",
+                        "integer",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string",
+                        "string"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 335,
+                "height": 218
+            },
+            "evaluatorReader": true,
+            "lineCount": 2
+        },
+        {
+            "id": "markdownlPzbmE",
+            "type": "markdown",
+            "body": [
+                "separate data to two sets"
+            ],
+            "evaluatorReader": false
+        },
+        {
+            "id": "codek99tTL",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "train = data[data['Date'] < '2015-01-01']",
+                    "test = data[data['Date'] > '2014-12-31']"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 310
+            },
+            "evaluatorReader": true,
+            "lineCount": 2
+        },
+        {
+            "id": "markdownyKwzFD",
+            "type": "markdown",
+            "body": [
+                "Now lets try just an example"
+            ],
+            "evaluatorReader": false
+        },
+        {
+            "id": "code45pExA",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "example = train.iloc[3,3].lower()",
+                    "example = CountVectorizer().build_tokenizer()(example)",
+                    "df = pd.DataFrame([[x,example.count(x)] for x in set(example)], columns = ['Word', 'Count'])",
+                    "print(df)"
+                ]
+            },
+            "output": {
+                "state": {},
+                "result": {
+                    "type": "Results",
+                    "outputdata": [
+                        {
+                            "type": "out",
+                            "value": "          Word  Count\n0      ordered      1\n1       attack      1\n2      ossetia      1\n3         when      1\n4           to      1\n5      capital      1\n6           of      1\n7         come      1\n8         were      1\n9   tskhinvali      1\n10       south      1\n11         the      2\n12     realize      1\n13        that      1\n14         how      1\n15          he      1\n16        knew      1\n17   president      1\n18        didn      1\n19        then      1\n20      doomed      1\n21          we      2\n"
+                        }
+                    ]
+                },
+                "selectedType": "Results",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 268,
+                "height": 407
+            },
+            "evaluatorReader": true,
+            "lineCount": 4
+        },
+        {
+            "id": "codeOpTsOy",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "new_df = df.sort_values(by=['Count'], ascending=False)",
+                    "print(new_df[0:5])"
+                ]
+            },
+            "output": {
+                "state": {},
+                "result": {
+                    "type": "Results",
+                    "outputdata": [
+                        {
+                            "type": "out",
+                            "value": "       Word  Count\n11      the      2\n21       we      2\n2   ossetia      1\n3      when      1\n20   doomed      1\n"
+                        }
+                    ]
+                },
+                "selectedType": "Results",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 355,
+                "height": 135
+            },
+            "evaluatorReader": true,
+            "lineCount": 2
+        },
+        {
+            "id": "markdownRDgplP",
+            "type": "markdown",
+            "body": [
+                "Let's now try bag-of-words model"
+            ],
+            "evaluatorReader": false
+        },
+        {
+            "id": "code0hGkAl",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "trainheadlines = []",
+                    "for row in range(0,len(train.index)):",
+                    "    trainheadlines.append(' '.join(str(x) for x in train.iloc[row,2:27]))"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 963
+            },
+            "evaluatorReader": true,
+            "lineCount": 3
+        },
+        {
+            "id": "codeLptiD5",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "basicvectorizer = CountVectorizer()",
+                    "basictrain = basicvectorizer.fit_transform(trainheadlines)",
+                    "df = pd.DataFrame([[x,basictrain.count(x)] for x in set(basictrain)], columns = ['Word', 'Count'])",
+                    "new_df = df.sort_values(by=['Count'], ascending=False)",
+                    "print(new_df[0:5])"
+                ]
+            },
+            "output": {
+                "state": {},
+                "result": {
+                    "type": "BeakerDisplay",
+                    "innertype": "Error",
+                    "object": [
+                        "unhashable type: &apos;csr_matrix&apos;",
+                        "unhashable type: &apos;csr_matrix&apos;<br><span  class=\"ansired\">---------------------------------------------------------------------------</span><br><span  class=\"ansired\">TypeError</span>                                 Traceback (most recent call last)<br><span  class=\"ansigreen\">&lt;ipython-input-1-1e26efbede53&gt;</span> in <span  class=\"ansicyan\">&lt;module&gt;<span  class=\"ansiblue\">()</span>\n<span  class=\"ansigreen\">      1</span> basicvectorizer <span  class=\"ansiyellow\">=</span> CountVectorizer<span  class=\"ansiyellow\">(</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">      2</span> basictrain <span  class=\"ansiyellow\">=</span> basicvectorizer<span  class=\"ansiyellow\">.</span>fit_transform<span  class=\"ansiyellow\">(</span>trainheadlines<span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">----&gt; 3<span  class=\"ansiyellow\"> </span>df <span  class=\"ansiyellow\">=</span> pd<span  class=\"ansiyellow\">.</span>DataFrame<span  class=\"ansiyellow\">(</span><span  class=\"ansiyellow\">[</span><span  class=\"ansiyellow\">[</span>x<span  class=\"ansiyellow\">,</span>basictrain<span  class=\"ansiyellow\">.</span>count<span  class=\"ansiyellow\">(</span>x<span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\">]</span> <span  class=\"ansigreen\">for</span> x <span  class=\"ansigreen\">in</span> set<span  class=\"ansiyellow\">(</span>basictrain<span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\">]</span><span  class=\"ansiyellow\">,</span> columns <span  class=\"ansiyellow\">=</span> <span  class=\"ansiyellow\">[</span><span  class=\"ansiblue\">&apos;Word&apos;</span><span  class=\"ansiyellow\">,</span> <span  class=\"ansiblue\">&apos;Count&apos;</span><span  class=\"ansiyellow\">]</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">      4</span> new_df <span  class=\"ansiyellow\">=</span> df<span  class=\"ansiyellow\">.</span>sort_values<span  class=\"ansiyellow\">(</span>by<span  class=\"ansiyellow\">=</span><span  class=\"ansiyellow\">[</span><span  class=\"ansiblue\">&apos;Count&apos;</span><span  class=\"ansiyellow\">]</span><span  class=\"ansiyellow\">,</span> ascending<span  class=\"ansiyellow\">=</span><span  class=\"ansigreen\">False</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">      5</span> print<span  class=\"ansiyellow\">(</span>new_df<span  class=\"ansiyellow\">[</span><span  class=\"ansicyan\">0</span><span  class=\"ansiyellow\">:</span><span  class=\"ansicyan\">5</span><span  class=\"ansiyellow\">]</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<br><span  class=\"ansired\">TypeError</span>: unhashable type: &apos;csr_matrix&apos;"
+                    ]
+                },
+                "selectedType": "BeakerDisplay",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 2075,
+                "height": 81
+            },
+            "evaluatorReader": true,
+            "lineCount": 5
+        },
+        {
+            "id": "code3Guxqe",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "basicvectorizer = CountVectorizer()",
+                    "basictrain = basicvectorizer.fit_transform(trainheadlines)",
+                    "print(basictrain.shape)"
+                ]
+            },
+            "output": {
+                "state": {},
+                "result": {
+                    "type": "Results",
+                    "outputdata": [
+                        {
+                            "type": "out",
+                            "value": "(1611, 31675)\n"
+                        }
+                    ],
+                    "payload": {
+                        "type": "BeakerDisplay",
+                        "innertype": "Error",
+                        "object": [
+                            "head not found",
+                            "head not found<br><span  class=\"ansired\">---------------------------------------------------------------------------</span><br><span  class=\"ansired\">AttributeError</span>                            Traceback (most recent call last)<br><span  class=\"ansigreen\">&lt;ipython-input-1-cc636e5b5f11&gt;</span> in <span  class=\"ansicyan\">&lt;module&gt;<span  class=\"ansiblue\">()</span>\n<span  class=\"ansigreen\">      2</span> basictrain <span  class=\"ansiyellow\">=</span> basicvectorizer<span  class=\"ansiyellow\">.</span>fit_transform<span  class=\"ansiyellow\">(</span>trainheadlines<span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">      3</span> print<span  class=\"ansiyellow\">(</span>basictrain<span  class=\"ansiyellow\">.</span>shape<span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">----&gt; 4<span  class=\"ansiyellow\"> </span>print<span  class=\"ansiyellow\">(</span>basictrain<span  class=\"ansiyellow\">.</span>head<span  class=\"ansiyellow\">(</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<br><span  class=\"ansigreen\">C:\\Distr\\Miniconda3\\lib\\site-packages\\scipy\\sparse\\base.py</span> in <span  class=\"ansicyan\">__getattr__<span  class=\"ansiblue\">(self, attr)</span>\n<span  class=\"ansigreen\">    523</span>             <span  class=\"ansigreen\">return</span> self<span  class=\"ansiyellow\">.</span>getnnz<span  class=\"ansiyellow\">(</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">    524</span>         <span  class=\"ansigreen\">else</span><span  class=\"ansiyellow\">:</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">--&gt; 525<span  class=\"ansiyellow\">             <span  class=\"ansigreen\">raise</span> AttributeError<span  class=\"ansiyellow\">(</span>attr <span  class=\"ansiyellow\">+</span> <span  class=\"ansiblue\">&quot; not found&quot;</span><span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">    526</span> <span  class=\"ansiyellow\"></span>\n<span  class=\"ansigreen\">    527</span>     <span  class=\"ansigreen\">def</span> transpose<span  class=\"ansiyellow\">(</span>self<span  class=\"ansiyellow\">)</span><span  class=\"ansiyellow\">:</span><span  class=\"ansiyellow\"></span>\n<br><span  class=\"ansired\">AttributeError</span>: head not found"
+                        ]
+                    }
+                },
+                "selectedType": "Results",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 1342,
+                "height": 99
+            },
+            "evaluatorReader": true,
+            "lineCount": 3
+        },
+        {
+            "id": "codeQ0UFe6",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "basicmodel = LogisticRegression()",
+                    "basicmodel = basicmodel.fit(basictrain, train[\"Label\"])"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 1328
+            },
+            "evaluatorReader": true,
+            "lineCount": 2
+        },
+        {
+            "id": "codebPHVBl",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "testheadlines = []",
+                    "for row in range(0,len(test.index)):",
+                    "    testheadlines.append(' '.join(str(x) for x in test.iloc[row,2:27]))",
+                    "basictest = basicvectorizer.transform(testheadlines)",
+                    "predictions = basicmodel.predict(basictest)"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 780
+            },
+            "evaluatorReader": true,
+            "lineCount": 5
+        },
+        {
+            "id": "codem7K01N",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "pd.crosstab(test[\"Label\"], predictions, rownames=[\"Actual\"], colnames=[\"Predicted\"])"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            0,
+                            1
+                        ],
+                        "actualtype": [
+                            2,
+                            2
+                        ],
+                        "actualalign": [
+                            "R",
+                            "R"
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        0,
+                        1
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            0,
+                            61,
+                            125
+                        ],
+                        [
+                            1,
+                            92,
+                            100
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "integer",
+                        "integer"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 291,
+                "height": 129
+            },
+            "evaluatorReader": true,
+            "lineCount": 1
+        },
+        {
+            "id": "codeIg69nu",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "basicwords = basicvectorizer.get_feature_names()",
+                    "basiccoeffs = basicmodel.coef_.tolist()[0]",
+                    "coeffdf = pd.DataFrame({'Word' : basicwords, ",
+                    "                        'Coefficient' : basiccoeffs})",
+                    "coeffdf = coeffdf.sort_values(['Coefficient', 'Word'], ascending=[0, 1])",
+                    "coeffdf.head(10)"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            "Coefficient",
+                            "Word"
+                        ],
+                        "actualtype": [
+                            "4.4",
+                            0
+                        ],
+                        "actualalign": [
+                            "R",
+                            "L"
+                        ],
+                        "colorder": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "getCellSho": [
+                            true,
+                            true
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        "Coefficient",
+                        "Word"
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            19419,
+                            0.4979239686911679,
+                            "nigeria"
+                        ],
+                        [
+                            25261,
+                            0.45252562928770357,
+                            "self"
+                        ],
+                        [
+                            29286,
+                            0.4280110524421369,
+                            "tv"
+                        ],
+                        [
+                            15998,
+                            0.4258627624952709,
+                            "korea"
+                        ],
+                        [
+                            20135,
+                            0.4257164802146873,
+                            "olympics"
+                        ],
+                        [
+                            15843,
+                            0.41163593784624886,
+                            "kills"
+                        ],
+                        [
+                            26323,
+                            0.41126735431394434,
+                            "so"
+                        ],
+                        [
+                            29256,
+                            0.39485483070191535,
+                            "turn"
+                        ],
+                        [
+                            10874,
+                            0.38855536774490373,
+                            "fears"
+                        ],
+                        [
+                            28274,
+                            0.3840307988040441,
+                            "territory"
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "double",
+                        "string"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 377,
+                "height": 345
+            },
+            "evaluatorReader": true,
+            "lineCount": 6
+        },
+        {
+            "id": "codeC2nlGA",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "coeffdf.tail(10)"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            "Coefficient",
+                            "Word"
+                        ],
+                        "actualtype": [
+                            "4.4",
+                            0
+                        ],
+                        "actualalign": [
+                            "R",
+                            "L"
+                        ],
+                        "colorder": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "getCellSho": [
+                            true,
+                            true
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        "Coefficient",
+                        "Word"
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            27299,
+                            -0.4244405205718831,
+                            "students"
+                        ],
+                        [
+                            8478,
+                            -0.42707885610382273,
+                            "did"
+                        ],
+                        [
+                            6683,
+                            -0.43192495762960453,
+                            "congo"
+                        ],
+                        [
+                            12818,
+                            -0.44406875177881316,
+                            "hacking"
+                        ],
+                        [
+                            7139,
+                            -0.44857056541635604,
+                            "country"
+                        ],
+                        [
+                            16949,
+                            -0.46311620225659944,
+                            "low"
+                        ],
+                        [
+                            3651,
+                            -0.4704542711940245,
+                            "begin"
+                        ],
+                        [
+                            25433,
+                            -0.49455502320838246,
+                            "sex"
+                        ],
+                        [
+                            24754,
+                            -0.5497247629521964,
+                            "sanctions"
+                        ],
+                        [
+                            24542,
+                            -0.5877942877006722,
+                            "run"
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "double",
+                        "string"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 279,
+                "height": 345
+            },
+            "evaluatorReader": true,
+            "lineCount": 1
+        },
+        {
+            "id": "markdownvt327Y",
+            "type": "markdown",
+            "body": [
+                "Advanced modelling"
+            ],
+            "evaluatorReader": false
+        },
+        {
+            "id": "code7R8sGo",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "advancedvectorizer = CountVectorizer(ngram_range=(2,2))",
+                    "advancedtrain = advancedvectorizer.fit_transform(trainheadlines)",
+                    "print(advancedtrain.shape)"
+                ]
+            },
+            "output": {
+                "state": {},
+                "result": {
+                    "type": "Results",
+                    "outputdata": [
+                        {
+                            "type": "out",
+                            "value": "(1611, 366721)\n"
+                        }
+                    ]
+                },
+                "selectedType": "Results",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 5422,
+                "height": 55
+            },
+            "evaluatorReader": true,
+            "lineCount": 3
+        },
+        {
+            "id": "codePAnNtP",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "advancedmodel = LogisticRegression()",
+                    "advancedmodel = advancedmodel.fit(advancedtrain, train[\"Label\"])"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 1718
+            },
+            "evaluatorReader": true,
+            "lineCount": 2
+        },
+        {
+            "id": "codeYfziI8",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "testheadlines = []",
+                    "for row in range(0,len(test.index)):",
+                    "    testheadlines.append(' '.join(str(x) for x in test.iloc[row,2:27]))",
+                    "advancedtest = advancedvectorizer.transform(testheadlines)",
+                    "advpredictions = advancedmodel.predict(advancedtest)"
+                ]
+            },
+            "output": {
+                "state": {},
+                "selectedType": "Hidden",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 978
+            },
+            "evaluatorReader": true,
+            "lineCount": 5
+        },
+        {
+            "id": "codebnOuYu",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "pd.crosstab(test[\"Label\"], advpredictions, rownames=[\"Actual\"], colnames=[\"Predicted\"])"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            0,
+                            1
+                        ],
+                        "actualtype": [
+                            2,
+                            2
+                        ],
+                        "actualalign": [
+                            "R",
+                            "R"
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        0,
+                        1
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            0,
+                            66,
+                            120
+                        ],
+                        [
+                            1,
+                            45,
+                            147
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "integer",
+                        "integer"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 307,
+                "height": 129
+            },
+            "evaluatorReader": true,
+            "lineCount": 1
+        },
+        {
+            "id": "codeKYfzdE",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "advwords = advancedvectorizer.get_feature_names()",
+                    "advcoeffs = advancedmodel.coef_.tolist()[0]",
+                    "advcoeffdf = pd.DataFrame({'Words' : advwords, ",
+                    "                        'Coefficient' : advcoeffs})",
+                    "advcoeffdf = advcoeffdf.sort_values(['Coefficient', 'Words'], ascending=[0, 1])",
+                    "advcoeffdf.head(10)"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            "Coefficient",
+                            "Words"
+                        ],
+                        "actualtype": [
+                            "4.4",
+                            0
+                        ],
+                        "actualalign": [
+                            "R",
+                            "L"
+                        ],
+                        "colorder": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "getCellSho": [
+                            true,
+                            true
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        "Coefficient",
+                        "Words"
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            272047,
+                            0.2865329047844189,
+                            "right to"
+                        ],
+                        [
+                            24710,
+                            0.27527354899838047,
+                            "and other"
+                        ],
+                        [
+                            285392,
+                            0.2746983472167702,
+                            "set to"
+                        ],
+                        [
+                            316194,
+                            0.2628725302787327,
+                            "the first"
+                        ],
+                        [
+                            157511,
+                            0.22794279905215095,
+                            "in china"
+                        ],
+                        [
+                            159522,
+                            0.22418433662004747,
+                            "in south"
+                        ],
+                        [
+                            125870,
+                            0.21912996475736746,
+                            "found in"
+                        ],
+                        [
+                            124411,
+                            0.2167261820828691,
+                            "forced to"
+                        ],
+                        [
+                            173246,
+                            0.21113667832950445,
+                            "it has"
+                        ],
+                        [
+                            322590,
+                            0.2092386584395279,
+                            "this is"
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "double",
+                        "string"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 3231,
+                "height": 345
+            },
+            "evaluatorReader": true,
+            "lineCount": 6
+        },
+        {
+            "id": "codet05qX6",
+            "type": "code",
+            "evaluator": "Python3",
+            "input": {
+                "body": [
+                    "advcoeffdf.tail(10)"
+                ]
+            },
+            "output": {
+                "state": {
+                    "datatablestate": {
+                        "pagination": {
+                            "use": true,
+                            "rowsToDisplay": 25,
+                            "fixLeft": 0,
+                            "fixRight": 0
+                        },
+                        "columnNames": [
+                            "Coefficient",
+                            "Words"
+                        ],
+                        "actualtype": [
+                            "4.4",
+                            0
+                        ],
+                        "actualalign": [
+                            "R",
+                            "L"
+                        ],
+                        "colorder": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "getCellSho": [
+                            true,
+                            true
+                        ],
+                        "barsOnColumn": {},
+                        "heatmapOnColumn": {},
+                        "tableFilter": "",
+                        "showFilter": false,
+                        "columnSearchActive": false,
+                        "columnFilter": [],
+                        "columnWidth": []
+                    }
+                },
+                "result": {
+                    "hasIndex": "true",
+                    "columnNames": [
+                        "Index",
+                        "Coefficient",
+                        "Words"
+                    ],
+                    "subtype": "TableDisplay",
+                    "values": [
+                        [
+                            326846,
+                            -0.1984948232646264,
+                            "to help"
+                        ],
+                        [
+                            118707,
+                            -0.20165362811168572,
+                            "fire on"
+                        ],
+                        [
+                            155038,
+                            -0.20970239398192225,
+                            "if he"
+                        ],
+                        [
+                            242528,
+                            -0.21130311939044785,
+                            "people are"
+                        ],
+                        [
+                            31669,
+                            -0.21336221867170344,
+                            "around the"
+                        ],
+                        [
+                            321333,
+                            -0.2156992544338417,
+                            "there is"
+                        ],
+                        [
+                            327113,
+                            -0.22181205725362213,
+                            "to kill"
+                        ],
+                        [
+                            340714,
+                            -0.2262894728601034,
+                            "up in"
+                        ],
+                        [
+                            358917,
+                            -0.22751576527290074,
+                            "with iran"
+                        ],
+                        [
+                            315485,
+                            -0.33115323529869706,
+                            "the country"
+                        ]
+                    ],
+                    "types": [
+                        "integer",
+                        "double",
+                        "string"
+                    ],
+                    "type": "TableDisplay"
+                },
+                "selectedType": "Table",
+                "pluginName": "Python3",
+                "shellId": "4AAE609A07E44C8989193FBAF7A37D97",
+                "elapsedTime": 315,
+                "height": 345
+            },
+            "evaluatorReader": true,
+            "lineCount": 1
+        }
+    ],
+    "namespace": {}
+}
